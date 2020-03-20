@@ -1,3 +1,26 @@
+## Watch List
+
+### Goals
+- react front end (create-react-app)
+- query json data ("the list")
+- pipe in info from imdb API 
+- graphQL practice
+
+Later mayhaps: other users create their own and share? connect mongodb?
+
+Description: (coming soon :) )
+
+
+
+
+
+
+
+
+
+
+*******************************************************************
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -28,18 +51,3 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ---------------------------------------------
-
-## Watch List, etc
-
-### Goals
-base of [tutorial](https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/) to get started (updated with ES6 goodness!)
-stack - MERN
-- mLab/Mongo backend
-    - note: pushed to use Mongo Atlas to connect, created new cluster/collection, added dotenv for env variables 
-- react front end
-
-----------------------------
-REDO FOLLOWING A TODO LIST APP
-
-
--------------------------------------------------
