@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TestData = props => (
+const RenderTitles = props => (
     <table>
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Release Date</th>
+                <th>Release Year</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -14,10 +14,11 @@ const TestData = props => (
                 props.titles.map(title => (
                     <tr key={title.id}>
                         <td>{title.title}</td>
-                        <td>{title.releaseDate}</td>
+                        <td>{title.releaseYear}</td>
                         <td>
-                            <button className="button">edit</button>
+                            <button className = "button" onClick = {() => { props.editRow(title)}}>edit</button>
                             <button className="button">delete</button>
+                            
                         </td>
                     </tr>
                 ))
@@ -30,4 +31,4 @@ const TestData = props => (
     </table>
 )
 
-export default TestData
+export default RenderTitles
