@@ -8,6 +8,7 @@ import "./styles/styles.css"
 
 const App = () => {
   const user = 'Haley'
+
   return (
     <div>
       <h2> Welcome, {user}</h2>

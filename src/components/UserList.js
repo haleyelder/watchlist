@@ -1,15 +1,14 @@
 import React from "react";
 
 const UserList = () => {
-  const titles = 
-   [
+  const titles = [
     {
       "id": 1,
       "title": "American Gods",
       "genre": "fantasy, adventure,drama",
       "year": 2017,
       "type": "tv",
-      "seasons": 2,
+      "seaons": 2,
     },
     {
       "id": 2,
@@ -17,7 +16,7 @@ const UserList = () => {
       "genre": "sci - fi,fantasy, adventure",
       "year": 1977,
       "type": "movie",
-      "seasons": null,
+      "seaons": null,
     },
     {
       "id": 3,
@@ -25,7 +24,7 @@ const UserList = () => {
       "genre": "sci - fi, fantasy, thriller",
       "year": 2018,
       "type": "tv",
-      "seasons": 2,
+      "seaons": 2,
     },
     {
       "id": 4,
@@ -33,7 +32,7 @@ const UserList = () => {
       "genre": "sci - fi, drama, thriller",
       "year": 2016,
       "type": "tv",
-      "seasons": 4,
+      "seaons": 4,
     },
 
     {
@@ -42,31 +41,31 @@ const UserList = () => {
       "genre": "sci - fi, fantasy",
       "year": 1995,
       "type": "movie",
-      "seasons": null,
+      "seaons": null,
     },
   ];
 
+// to render next
+  // for (var items in titles) {
+  //   return titles[items]
+  // }
+  // const items = titles.map(x => {
+  //   const title = Object.getOwnPropertyNames(x.title).map(key => {
+  //     return `TITLE: ${x.title}`
+  //   }).join(',')
 
-    /* future:
-    - where to watch? 
-    - icons for "genre"s
-    */
-// console.log(titles[0].title)
-// const shows = titles.map(item => {
-//   const container = {}
-//   container[item.id] = item.id
-//   return container;
-// })
+  //   return `GENRE: ${x.genre}\n\n${title}`;
+  // }).join('\n\n---\n\n')
 
-// console.log(shows)
   return (
     <div>
+      {items}
       <table>
         <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Year</th>
-          <th>Type</th>
+          <th>id</th>
+          <th>title</th>
+          <th>year</th>
+          <th>type</th>
         </tr>
         <tr>
           <td>1</td>
