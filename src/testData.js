@@ -43,8 +43,3 @@ const titles =
     },
   ];
 
-
-/* future:
-    - where to watch? 
-    - icons for "genre"s
-    */
