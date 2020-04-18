@@ -2,9 +2,9 @@
 
 ### Goals
 - react front end (create-react-app)
-- query json data ("the list")
-- pipe in info from imdb API 
-- graphQL practice
+- pipe in info from imdb API (OMDB)
+- add DB to share list with firebase
+
 
 Later mayhaps: other users create their own and share? connect mongodb?
 

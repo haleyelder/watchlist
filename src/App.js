@@ -8,36 +8,31 @@ import axios from 'axios'
 import "./styles/styles.css";
 
 const movieURL = "http://www.omdbapi.com/?t=American+Gods&apikey=7f07f413";
+//${searchterm} when adding the search bar
 
-class App extends React.Component {
-  state = {
-    titleData: {}
-  }
+const App = () => {
+  const [titles, setTitles] = useState([]);
+  const [genre, setGenre] = useState([])
 
-  componentDidMount() {
-    axios.get(movieURL)
-    .then(res => res.data)
-    .then(res => {
-      this.setState({ titleData: res })
-    });
-  }
+  useEffect(() => {
+    fetch(movieURL)
+      .then((res) => res.json())
+      .then((response) => {
+          
+        setTitles(response.Title);
+        setGenre(response.Genre)
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  render() {
-    const {
-      Title, 
-      Genre
-    } = this.state.titleData
-
-    return (
-      <div>
-        <span>{Title}</span>
-        <br></br>
-        <span>{Genre}</span>
-        
-      </div>
+  return (
+    <div>
+       <span>Titles {titles}</span> 
+       <br></br>
+       <span> Genre: {genre}</span>
+    </div>
     )
-  }
+};
 
-}
 
 export default App;
