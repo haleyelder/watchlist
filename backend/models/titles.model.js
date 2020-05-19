@@ -13,4 +13,4 @@ const titleSchema = new Schema ({
 
 const Titles = mongoose.model('Titles', titleSchema)
 
-module.exports = Exercise
+module.exports = Titles
