@@ -1,68 +1,84 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Title = props => (
-  <tr>
-    <td>{props.title.username}</td>
-    <td>{props.title.description}</td>
-    <td>{props.title.year}</td>
-    <td>{props.title.date.substring(0,10)}</td>
-    <td>
-      <Link to={"/edit/"+props.title._id}>edit</Link> | <a href="#" onClick={() => { props.deleteTitle(props.title._id) }}>delete</a>
-    </td>
-  </tr>
-)
+const Title = (props) => {
+  return (
+    <tr>
+      <td>{props.username}</td>
+      <td>{props.description}</td>
+      <td>{props.year}</td>
+      <td>{props.date}</td>
+      <td>
+        <Link to={"/edit/" + props._id}>edit</Link> |{" "}
+        <a
+          href="#"
+          onClick={() => {
+            props.deleteTitle(props._id);
+          }}
+        >
+          delete
+        </a>
+      </td>
+    </tr>
+  );
+};
 
-export default class TitleList extends Component {
-  constructor(props) {
-    super(props);
-    this.deleteTitle = this.deleteTitle.bind(this);
-    this.state = { titles: [] };
-  }
-  componentDidMount() {
+const TitlesList = () => {
+  const [titles, setTitles] = useState([]);
+
+  useEffect(() => {
     axios
       .get("http://localhost:5000/titles/")
-      .then((response) => {
-        this.setState({ titles: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  deleteTitle(id) {
-    axios
-      .delete("http://localhost:5000/titles/" + id)
-      .then((res) => console.log(res.data));
-    this.setState({
-      titles: this.state.titles.filter((el) => el._id !== id),
+      .then((result) => setTitles(result.data));
+    // .catch(error => {console.log(error)})
+  }, []);
+
+  useEffect(() => {
+    const deleteTitle = (id) => {
+      axios
+        .delete("http://localhost:5000/titles/" + id)
+        .then((result) => console.log("result: " + result.data));
+
+      setTitles({ titles: titles.filter((el) => el._id !== id) });
+    };
+  }, []);
+
+  const titleList = () => {
+    console.log(titles);
+    return titles.map((currentTitle) => {
+      return (
+        <Title
+          title={currentTitle}
+          deleteTitle={currentTitle.deleteTitle}
+          key={currentTitle._id}
+        />
+      );
     });
-  }
+  };
 
-  titleList() {
-    return this.state.titles.map(currentTitle => {
-      return <Title title={currentTitle} deleteTitle={this.deleteTitle} key={currentTitle._id}/>;
-    })
-  }
-
-
-  render() {
-    return (
+  return (
+    <div>
+      <h3>Logged Titles</h3>
+      <table className="table">
+        <thead className="thead-light">
+          <tr>
+            <th>Username</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+      </table>
       <div>
-        <h3>Logged Titles</h3>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Username</th>
-              <th>Title</th>
-              <th>Year</th>
-              <th>Date Added</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{this.titleList()}</tbody>
-        </table>
+        {titles.map((item) => (
+          <div key={item.description}>{item.description}</div>
+        ))}
       </div>
-    );
-  }
-}
+      <tbody>{titleList()}</tbody>
+    </div>
+  );
+};
+
+export default TitlesList;
