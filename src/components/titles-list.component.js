@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Title = (props) => {
+const Title = props => {
   return (
     <tr>
       <td>{props.username}</td>
@@ -34,18 +34,18 @@ const TitlesList = () => {
     // .catch(error => {console.log(error)})
   }, []);
 
-  useEffect(() => {
+  
     const deleteTitle = (id) => {
       axios
         .delete("http://localhost:5000/titles/" + id)
         .then((result) => console.log("result: " + result.data));
-
-      setTitles({ titles: titles.filter((el) => el._id !== id) });
+        
+        setTitles({ titles: titles.filter((el) => el._id !== id) })
     };
-  }, []);
-
+  
+    
   const titleList = () => {
-    console.log(titles);
+    // console.log(titles);
     return titles.map((currentTitle) => {
       return (
         <Title
