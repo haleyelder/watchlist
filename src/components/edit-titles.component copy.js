@@ -1,38 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
-const EditTitle = () => {
-  const [username, setUpdateUsername] = useState("");
-  const [description, setUpdateDescription] = useState("");
-  const [year, setUpdateYear] = useState(0);
-  const [date, setUpdatedDate] = useState(new Date());
-  const [users, setUpdateUsers] = useState([]);
-}
+export default class EditTitle extends Component {
+  constructor(props) {
+    super(props);
 
-useEffect(() => {
-  axios.get('http://localhost:5000/titles/'+this.props.match.params.id)
-    .then(response => {
-      this.setState({
-        username: response.data.username,
-        description: response.data.description,
-        year: response.data.year,
-        date: new Date(response.data.date)
-      })   
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-  
-  axios.get('http://localhost:5000/users/')
-    .then(response => {
-      this.setState({ users: response.data.map(user => user.username) });
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-}, []);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeYear = this.onChangeYear.bind(this);
+    this.onChangeDate = this.onChangeDate.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      username: '',
+      description: '',
+      year: 0,
+      date: new Date(),
+      users: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:5000/titles/'+this.props.match.params.id)
+      .then(response => {
+        this.setState({
+          username: response.data.username,
+          description: response.data.description,
+          year: response.data.year,
+          date: new Date(response.data.date)
+        })   
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+    axios.get('http://localhost:5000/users/')
+      .then(response => {
+        this.setState({ users: response.data.map(user => user.username) });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
 
   onChangeUsername(e) {
     this.setState({

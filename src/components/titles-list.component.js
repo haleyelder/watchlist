@@ -10,6 +10,7 @@ const Title = props => {
       <td>{props.year}</td>
       <td>{props.date}</td>
       <td>
+        {/* props._id showing undefined */}
         <Link to={"/edit/" + props._id}>edit</Link> |{" "}
         <a
           href="#"
@@ -43,7 +44,7 @@ const TitlesList = () => {
         setTitles({ titles: titles.filter((el) => el._id !== id) })
     };
   
-    
+    // displays titles but does not edit/delete (yet)
   const titleList = () => {
     // console.log(titles);
     return titles.map((currentTitle) => {
