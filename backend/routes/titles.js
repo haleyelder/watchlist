@@ -1,52 +1,54 @@
 const router = require('express').Router()
 let Title = require('../models/titles.model')
 
-router.route('/').get((req, res) => {
-    Title.find()
-        .then(titles => res.json(titles))
-        .catch(err => res.status(400).json('error: ' + err))
-});
-
-router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const description = req.body.description;
-    const year = Number(req.body.year)
-    const date = Date.parse(req.body.date)
-
-    const newTitle = new Title({
-        username,
-        description,
-        year,
-        date,
-    })
-    newTitle.save()
-        .then(() => res.json('title added'))
-        .catch(err => res.status(400).json('error: ' + err))
+router.get('/', function(req, res) {
+  Title.find(function(err, titles) {
+    res.json(titles);
+  })
 })
 
-router.route('/:id').get((req, res) => {
-    Title.findById(req.params.id)
-      .then(titles => res.json(titles))
-      .catch(err => res.status(400).json('Error: ' + err));
-  });
-  router.route('/:id').delete((req, res) => {
-    Title.findByIdAndDelete(req.params.id)
-      .then(() => res.json('title deleted.'))
-      .catch(err => res.status(400).json('Error: ' + err));
-  });
-  router.route('/update/:id').post((req, res) => {
-    Title.findById(req.params.id)
-      .then(titles => {
-        titles.username = req.body.username;
-        titles.description = req.body.description;
-        titles.year = Number(req.body.year);
-        titles.date = Date.parse(req.body.date);
-  
-        titles.save()
-          .then(() => res.json('titles updated!'))
-          .catch(err => res.status(400).json('Error: ' + err));
-      })
-      .catch(err => res.status(400).json('Error: ' + err));
-  });
+router.get('/titles/:id', function(req, res) {
+  Title.findById(req.params.id, function(err, article) {
+    if (!title) {
+      res.status(404).send('no result found');
+    } else {
+      res.json(article);
+    }
+  })
+})
 
+router.post('/titles', function(req, res) {
+  let title = new Title(req.body);
+  title.save()
+    .then(title => {
+      res.send(title);
+    })
+    .catch(function(err) {
+      res.status(422).send('title add failed')
+    })
+})
+
+router.patch('/titles/:id', function(req, res) {
+  Title.findByIdAndUpdate(req.params.id, req.body)
+    .then(function() {
+      res.json('title updated')
+    })
+    .catch(function(err) {
+      res.status(422).send('title update failed')
+    })
+})
+
+router.delete('/titles/:id', function(req, res) {
+  Title.findById(req.params.id, function(err, article) {
+    if (!title) {
+      res.status(404).send('title not found');
+    } else {
+      Title.findByIdAndRemove(req.params.id)
+        .then(function() { res.status(200).json('title deleted') })
+        .catch(function(err) {
+          res.status(400).send('title delete failed')
+        })
+    }
+  })
+})
 module.exports = router

@@ -20,10 +20,15 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navbar-item">
+            <Link to="/info" className="nav-link">
+              Title Info
+            </Link>
+          </li>
+          {/* <li className="navbar-item">
             <Link to="/user" className="nav-link">
               Create User
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

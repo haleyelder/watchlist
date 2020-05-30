@@ -5,8 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar.component.js";
 import TitlesList from "./components/titles-list.component.js";
 import EditTitles from "./components/edit-titles.component.js";
-import CreateTitle from "./components/create-titles.component.js";
-import CreateUser from "./components/create-user.component.js";
+import CreateTitle from "./components/create-title.component.js";
+// import CreateUser from "./components/create-user.component.js";
+import TitleInfo from "./components/title-info.component.js";
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
         <Route path="/" exact component={TitlesList} />
         <Route path="/edit/:id" component={EditTitles} />
         <Route path="/create" component={CreateTitle} />
-        <Route path="/user" component={CreateUser} />
+        <Route path="/info" component={TitleInfo} />
+        {/* <Route path="/user" component={CreateUser} /> */}
       </Router>
     </div>
   );
