@@ -1,27 +1,51 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 
-import Navbar from "./components/navbar.component.js";
-import TitlesList from "./components/titles-list.component.js";
-import EditTitles from "./components/edit-titles.component.js";
-import CreateTitle from "./components/create-title.component.js";
-// import CreateUser from "./components/create-user.component.js";
-import TitleInfo from "./components/title-info.component.js";
+import Home from './components/pages/Home'
+import TitleList from './components/titles/TitleList'
+import TitleInfo from './components/titles/TitleInfo'
+import TitleAdd from './components/titles/TitleAdd'
+import TitleEdit from './components/titles/TitleEdit'
+
+
+
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <Router>
-        <Navbar />
-        <Route path="/" exact component={TitlesList} />
-        <Route path="/edit/:id" component={EditTitles} />
-        <Route path="/create" component={CreateTitle} />
-        <Route path="/info" component={TitleInfo} />
-        {/* <Route path="/user" component={CreateUser} /> */}
+        <Navigation/>
+        <div className="container">
+          <Main/>
+        </div>
       </Router>
     </div>
+  )
+}
+
+const Navigation = () => {
+  return(
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div className='container'>
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to="/">Home</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to="/titles">Titles</NavLink></li>
+        </ul>
+      </div>
+    </nav>
   );
-};
+}
+
+const Main = () => {
+  return(
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/titles" component={TitleList} />
+      <Route exact path="/titles/new" component={TitleAdd} />
+      <Route exact path="/titles/:_id" component={TitleInfo} />
+      <Route exact path="/titles/:_id/edit" component={TitleEdit} />
+    </Switch>
+  );
+}
 
 export default App;
