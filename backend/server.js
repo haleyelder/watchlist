@@ -11,8 +11,6 @@ const uri = process.env.ATLAS_URI
 app.use(cors())
 app.use(express.json())
 app.use('/api', router)
-// app.use('/users', usersRouter)
-
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true})
 

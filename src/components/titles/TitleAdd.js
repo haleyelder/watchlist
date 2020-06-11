@@ -24,7 +24,7 @@ const TitleAdd = (props) => {
     } 
 
     const handleCancel = () => {
-        props.history.push('http://localhost:3001/api/titles')
+        props.history.push('/titles')
     }
 
     return (
