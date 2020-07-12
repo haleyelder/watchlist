@@ -1,14 +1,4 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.add-title-form {
-    /* border: 1px solid red; */
-    margin: 5px 0;    
-}
-th {
-    border: 2px solid black
-}
-td {
-    border: 1px solid black
+.flex-large {
+  width: 45%;
+  float: left;
 }
