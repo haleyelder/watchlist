@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UserTable from "./components/UserTable";
 import AddUserForm from "./components/AddUserForm";
 import EditUserForm from "./components/EditUserForm";
+import AddTitleForm from "./components/AddTitleForm";
 
 const App = () => {
   const initialFormState = { id: null, name: "", username: "" };
@@ -35,10 +36,11 @@ const App = () => {
   }
 
   return (
+    <>
     <div className="container">
       <h1>crud test</h1>
-      <div className="flex-row">
-        <div className="flex-large">
+      <div>
+        <div>
           {editing ? (
             <div>
               <div> Edit user</div>
@@ -54,14 +56,18 @@ const App = () => {
               <AddUserForm addUser={addUser} />
             </div>
           )}
-        </div>
-      
-        <div className="flex-large">
+        </div>      
+        <div>
           <h2>view users</h2>
           <UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
         </div>
       </div>
     </div>
+    <div className="container ">
+      <h2>Add Title</h2>
+      <AddTitleForm/>
+    </div>
+  </>
   );
 };
 
