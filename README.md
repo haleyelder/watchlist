@@ -1,19 +1,14 @@
 ## Watch List
 
 ### Goals
-- react front end (create-react-app)
-- pipe in info from imdb API (OMDB)
-- add DB to share list with firebase
-
-
-Later mayhaps: other users create their own and share? connect mongodb?
+- mongodb backend 
+- react front end (using hooks)
+- use Imdb API (OMDB) as search bar helper
+- custom form additions
+- create accounts/logins
+- share lists with other uses
 
 Description: (coming soon :) )
-
-
-
-
-
 
 
 

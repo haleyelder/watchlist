@@ -2,7 +2,7 @@ const router = require('express').Router()
 let Title = require('../models/title.model')
 
 router.route('/').get((req, res) => {
-    Exercise.find()
+    Title.find()
         .then(exercises => res.json(exercises))
         .catch(err => res.status(400))
 })
@@ -39,7 +39,7 @@ router.route('/update/:id').post((req, res) => {
             title.username = req.body.username;
             title.title = req.body.title
 
-            exercise.save()
+            title.save()
                 .then(() => res.json('title update'))
                 .catch(err => res.status(400).json('err: ' + err))
         })
