@@ -17,6 +17,9 @@ connection.once("open", () => {
 app.use(cors());
 app.use(express.json());
 
+// static files
+app.use(express.static('./build'));
+
 // connect routes
 const titleRouter = require("./routes/titles");
 const usersRouter = require("./routes/users");

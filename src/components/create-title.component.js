@@ -24,7 +24,7 @@ export default class CreateTitle extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/users/")
+      .get("/users/")
       .then((response) => {
         if (response.data.length > 0) {
           this.setState({
@@ -71,7 +71,7 @@ export default class CreateTitle extends Component {
     console.log(title);
 
     axios
-      .post("http://localhost:5000/titles/add", title)
+      .post("/titles/add", title)
       .then((res) => console.log(res.data));
 
     Window.location = "/";

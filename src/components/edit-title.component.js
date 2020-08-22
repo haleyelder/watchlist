@@ -23,7 +23,7 @@ export default class EditTitle extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/titles/'+this.props.match.params.id)
+    axios.get('/titles/'+this.props.match.params.id)
       .then(res => {
         this.setState({
           username: res.data.username,
@@ -36,7 +36,7 @@ export default class EditTitle extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/users/')
+    axios.get('/users/')
       .then(res => {
         this.setState({ users: res.data.map(user => user.username) });
       })
@@ -81,7 +81,7 @@ export default class EditTitle extends Component {
 
     console.log(title);
 
-    axios.post('http://localhost:5000/titles/update/'+this.props.match.params.id, title)
+    axios.post('/titles/update/'+this.props.match.params.id, title)
       .then(res => console.log(res.data));
     
     window.location = '/';

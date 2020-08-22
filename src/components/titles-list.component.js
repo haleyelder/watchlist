@@ -22,7 +22,7 @@ export default class TitlesList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/titles/')
+    axios.get('/titles/')
      .then(response => {
        this.setState({ titles: response.data });
      })
@@ -33,7 +33,7 @@ export default class TitlesList extends Component {
   }
 
   deleteTitle(id) {
-    axios.delete('http://localhost:5000/titles/'+id)
+    axios.delete('/titles/'+id)
       .then(res => console.log(res.data));
     this.setState({
       titles: this.state.titles.filter(el => el._id !== id)
