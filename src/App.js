@@ -1,73 +1,26 @@
-import React, { useState } from "react";
-import UserTable from "./components/UserTable";
-import AddUserForm from "./components/AddUserForm";
-import EditUserForm from "./components/EditUserForm";
-import AddTitleForm from "./components/AddTitleForm";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Navbar from './components/navbar.component.js'
+import TitlesList from './components/titles-list.component.js'
+import EditTitle from './components/edit-title.component.js'
+import CreateTitle from './components/create-title.component.js'
+import CreateUser from './components/create-user.component.js'
+
 
 const App = () => {
-  const initialFormState = { id: null, name: "", username: "" };
-  const usersData = [
-    { id: 1, name: "haley", username: "comette" },
-    { id: 2, name: "john", username: "johndoe" },
-    { id: 3, name: "jill", username: "jilldoe" },
-  ];
-
-  const [users, setUsers] = useState(usersData);
-  const [editing, setEditing] = useState(false);
-  const [currentUser, setCurrentUser] = useState(initialFormState);
-
-  const addUser = (user) => {
-    user.id = users.length + 1;
-    setUsers([...users, user]);
-  };
-
-  const deleteUser = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-  };
-
-  const editRow = (user) => {
-    setEditing(true);
-    setCurrentUser({ id: user.id, name: user.name, username: user.username });
-  };
-
-  const updateUser = (id, updateUser) => {
-    setEditing(false)
-    setUsers(users.map((user) => (user.id === id ? updateUser : user )))
-  }
-
   return (
-    <>
-    <div className="container">
-      <h1>crud test</h1>
-      <div>
-        <div>
-          {editing ? (
-            <div>
-              <div> Edit user</div>
-              <EditUserForm
-                setEditing={setEditing}
-                currentUser={currentUser}
-                updateUser={updateUser}
-              />
-            </div>
-          ) : (
-            <div>
-              <h2> add user</h2>
-              <AddUserForm addUser={addUser} />
-            </div>
-          )}
-        </div>      
-        <div>
-          <h2>view users</h2>
-          <UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
-        </div>
+    <Router>
+      <div className="container">
+        <Navbar />
       </div>
-    </div>
-    <div className="container ">
-      <h2>Add Title</h2>
-      <AddTitleForm/>
-    </div>
-  </>
+      <div>
+        <Route path="/" exact component={TitlesList} />
+        <Route path="/edit/:id" exact component={EditTitle} />
+        <Route path="/create" exact component={CreateTitle} />
+        <Route path="/user" exact component={CreateUser} />
+      </div>
+    </Router>
   );
 };
 
