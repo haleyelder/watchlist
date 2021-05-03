@@ -1,14 +1,12 @@
 {
   "name": "watchlist",
   "version": "1.0.0",
-  "description": "",
+  "description": "- mongodb backend \r - react front end (using hooks)\r - use Imdb API (OMDB) as search bar helper\r - custom form additions\r - create accounts/logins\r - share lists with other uses",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run start\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "engines": {
     "node": "12.14.1"
@@ -16,21 +14,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "proxy": "http://localhost:5000/",
   "dependencies": {
-    "axios": "^0.19.2",
-    "bootstrap": "^4.5.2",
-    "concurrently": "^5.3.0",
     "cors": "^2.8.5",
-    "expres": "0.0.5",
-    "json-loader": "^0.5.7",
-    "mongoose": "^5.10.2",
-    "path": "^0.12.7",
-    "react": "^16.10.1",
-    "react-datepicker": "^2.16.0",
-    "react-dom": "^16.10.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.1.2"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7"
   },
   "browserslist": {
     "production": [
@@ -43,5 +31,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haleyelder/watchlist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haleyelder/watchlist/issues"
+  },
+  "homepage": "https://github.com/haleyelder/watchlist#readme"
 }
