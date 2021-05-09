@@ -1,45 +1,21 @@
 {
   "name": "watchlist",
   "version": "1.0.0",
-  "description": "- mongodb backend \r - react front end (using hooks)\r - use Imdb API (OMDB) as search bar helper\r - custom form additions\r - create accounts/logins\r - share lists with other uses",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "dev": "concurrently \"nodemon server.js\" \"cd client && npm run start\""
   },
-  "engines": {
-    "node": "12.14.1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^6.0.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.7"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haleyelder/watchlist.git"
-  },
-  "bugs": {
-    "url": "https://github.com/haleyelder/watchlist/issues"
-  },
-  "homepage": "https://github.com/haleyelder/watchlist#readme"
+  }
 }

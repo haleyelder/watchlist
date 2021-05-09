@@ -1,57 +1,56 @@
-const express = require("express");
-const router = express.Router();
-const Title = require("../models/title");
+const express = require ('express'); 
+const router = express.Router(); 
+const Title = require('../models/title'); 
 
-router.get("/titles", (req, res) => {
-  Title.find(function (err, titles) {
-    res.json(titles);
-  });
-});
+router.get('/titles', function(req, res) {
+  Title.find(function(err, titles) {
+      res.json(titles)
+  })
+})
 
-router.get("/titles/:id", (req, res) => {
-  Title.findById(req.params.id, function (err, title) {
+router.get('/titles/:id', function(req, res) {  
+  Title.findById(req.params.id, function(err, title) {
     if (!title) {
-      res.status(404).send("no result found");
+      res.status(404).send('No result found');
     } else {
       res.json(title);
     }
   });
 });
 
-router.post("/titles", (req, res) => {
+router.post('/titles', function(req, res) {     
   let title = new Title(req.body);
-  title
-    .save()
-    .then((title) => {
+  title.save()
+    .then(title => {
       res.send(title);
     })
-    .catch(function (err) {
-      res.status(422).send("title add failed");
+    .catch(function(err) {
+      res.status(422).send('title add failed');
     });
 });
 
-router.patch('/titles/:id', (req, res) => {
-    Title.findByIdAndUpdate(req.params.id, req.body)
-        .then(function() {
-            res.json('title updated')
-        })
-        .catch(function(err) {
-            res.status(422).send('title update failed')
-        })
-})
-
-router.delete('/titles/:id', (req, res) => {
-    Title.findById(req.params.id, (err, title) => {
-        if (!title) {
-            res.status(404).send('title not found')
-        } else {
-            Title.findByIdAndRemoove(req.params.id)
-                .then(function() {res.status(200).json('title deleted')})
-                .catch(function(err) {
-                    res.status(400).send('title delete failed')
-                })
-        }
+router.patch('/titles/:id', function(req, res){    
+  Title.findByIdAndUpdate(req.params.id, req.body)
+    .then(function() {
+      res.json('title updated');
     })
+    .catch(function(err) {
+      res.status(422).send("title update failed.");
+    });
+});
+
+router.delete('/titles/:id', function(req, res) {  
+  Title.findById(req.params.id, function(err, title) {
+    if (!title) {
+      res.status(404).send('title not found');
+    } else {
+      Title.findByIdAndRemove(req.params.id)
+        .then(function() { res.status(200).json("title deleted") })
+        .catch(function(err) {
+          res.status(400).send("title delete failed.");
+        })
+    }
+  });
 })
 
-module.exports = router
+module.exports = router; 
