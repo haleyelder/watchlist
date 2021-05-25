@@ -40,6 +40,26 @@ function TitleAdd(props) {
             <label>Year</label>
             <input name="year" type="text" value={title.year} onChange={handleChange} className="form-control" />
           </div>
+          <div className="form-group">
+            <label>Type</label>
+            <input name="type" type="text" value={title.type} onChange={handleChange} className="form-control" />
+          </div>
+          <div className="form-group">
+            <label>Genre</label>
+            <input name="genre" type="text" value={title.genre} onChange={handleChange} className="form-control" />
+          </div>
+          <div className="form-group">
+            <label>Seasons</label>
+            <input name="seasons" type="text" value={title.seasons} onChange={handleChange} className="form-control" />
+          </div>
+          <div className="form-group">
+            <label>Date Added:</label>
+            <input name="dateAdded" type="date" value={title.dateAdded} onChange={handleChange} className="form-control" />
+          </div>
+          <div className="form-group">
+            <label>Date Completed: </label>
+            <input name="dateCompleted" type="date" value={title.dateCompleted} onChange={handleChange} className="form-control" />
+          </div>
           <div className="btn-group">
             <input type="submit" value="Submit" className="btn btn-primary" />
             <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancel</button>
