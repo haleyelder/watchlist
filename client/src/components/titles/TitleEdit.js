@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { get, patch } from 'axios';
 
 const TitleEdit = (props) => {
-    const initialState = {title: '', year: ''}
+    const initialState = {title: '', year: ''} 
     const [title, setTitle] = useState(initialState)
 
     useEffect(function() {
@@ -48,8 +48,28 @@ const TitleEdit = (props) => {
                 </div>
                 <div className="form-group">
                     <label>Year</label>
-                    <textarea name="year" rows="5" value={title.year} onChange={handleChange} className="form-control" />
+                    <input name="year" value={title.year} onChange={handleChange} className="form-control" />
                 </div>
+                {/* <div className="form-group">
+                    <label>Type </label>
+                    <input name="type" placeholder="movie or tv?"type="text" value={title.type} onChange={handleChange} className="form-control" />
+                </div>
+                <div className="form-group">
+                    <label>Genre</label>
+                    <input name="genre" placeholder="genre" type="text"value={title.genre} onChange={handleChange} className="form-control" />
+                </div>
+                <div className="form-group">
+                    <label>Season (if TV)</label>
+                    <input name="seasons" placeholder="seasons"type="text" value={title.seasons} onChange={handleChange} className="form-control" />
+                </div>
+                <div className="form-group">
+                    <label>Date Added: </label>
+                    <input type="date" name="dateAdded" placeholder="MM/DD/YYYY" value={title.dateAdded} onChange={handleChange} className="form-control" />
+                </div>
+                <div className="form-group">
+                    <label>Date Completed: </label>
+                    <input type="date" name="dateCompleted" placeholder="MM/DD/YYYY" value={title.dateCompleted} onChange={handleChange} className="form-control" />
+                </div> */}
                 <div className="btn-group">
                     <button type="submit" className="btn btn-primary">Update</button>
                     <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancel</button>

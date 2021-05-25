@@ -28,9 +28,15 @@ const TitleInfo = (props) => {
 
     return (
         <div>
-            <h2>{title.title}</h2>
+            <h2>Title: {title.title}</h2>
             <small>_id: {title._id}</small>
-            <p>{title.year}</p>
+            <p>Year: {title.year}</p>
+            {/* <p>Type: {title.type}</p>
+            <p>Genre: {title.genre}</p>
+            <p>Seasons: {title.seasons}</p>
+            <p>Date Added: {title.dateAdded}</p>
+            <p>Date Completed: {title.dateCompleted}</p> */}
+
             <div className="btn-group">
                 <Link to={`/titles/${title._id}/edit`} className="btn btn-primary">Edit</Link> 
                 <button onClick={handleDelete} className="btn btn-danger">Delete</button> 
